@@ -1,0 +1,62 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: daherman <daherman@student.42barcelon      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/06/01 11:07:29 by daherman          #+#    #+#              #
+#    Updated: 2026/06/01 11:51:23 by daherman         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = push_swap
+
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+
+# --- PATH ---
+LIBFT_DIR = libs/libft
+
+# --- INCLUDES ---
+INCLUDES = -I include -I $(LIBFT_DIR)
+
+# --- LINK libft ---
+LIBFT = $(LIBFT_DIR)/libft.a
+
+# --- SOURCES ---
+SRC_DIR = src
+
+SRC = \
+      $(SRC_DIR)/main.c
+
+OBJ = $(SRC:.c=.o)
+
+# --- RULES ---
+
+all: $(NAME)
+
+# ---compile libft
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
+
+# ---final link
+$(NAME): $(OBJ)
+	$(MAKE) -C $(LIBFT_DIR)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LIBFT) -o $(NAME)
+
+# compile .c -> .o
+%.o: %.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+clean:
+	rm -f $(OBJ)
+	$(MAKE) -C $(LIBFT_DIR) clean
+
+fclean: clean
+	rm -f $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
+
+re: fclean all
+
+.PHONY: all clean fclean re
