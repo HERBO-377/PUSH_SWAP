@@ -6,7 +6,7 @@
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 12:52:04 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/03 10:23:43 by daherman         ###   ########.fr       */
+/*   Updated: 2026/06/03 12:33:58 by daherman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <limits.h>
 
 int	main(int arcg, char **argv);
+char	**check_split(char *s);
+long	ft_atol(char *s);
 
 typedef struct s_node
 {

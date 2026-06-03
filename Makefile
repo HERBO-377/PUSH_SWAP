@@ -6,7 +6,7 @@
 #    By: daherman <daherman@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/01 11:07:29 by daherman          #+#    #+#              #
-#    Updated: 2026/06/01 11:51:23 by daherman         ###   ########.fr        #
+#    Updated: 2026/06/03 12:23:24 by daherman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ LIBFT = $(LIBFT_DIR)/libft.a
 SRC_DIR = src
 
 SRC = \
-      $(SRC_DIR)/main.c
+      $(SRC_DIR)/main.c \
+      $(SRC_DIR)/parsing/arg_checkers.c \
 
 OBJ = $(SRC:.c=.o)
 
