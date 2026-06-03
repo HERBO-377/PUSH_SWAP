@@ -1,16 +1,6 @@
 #include "push_swap.h"
-#include "libft.h"
 
-int	arr_len(char **arr)
-{
-	int	i;
-	
-	while (arr[i])
-		i++;
-	return (i);
-}
-
-// Check if arg only have number and remove spaces
+// Check if arg only have number and remove spaces include signs
 char	**arg_check_split(char *s)
 {
 	int	i;
@@ -19,7 +9,7 @@ char	**arg_check_split(char *s)
 	i = 0;
 	while (s[i])
 	{
-		while (s[i] == ' ')
+		while (s[i] == ' ' || s[i] == '+' || s[i] == '-')
 			i++;
 		if (s[i] == '\0')
 			break;
@@ -44,31 +34,17 @@ int	main(int argc, char **argv)
 	// 1st arg check if no-num no party 
 	if (argc == 2)
 	{
-		full_list = arg_check_split(argv[i]);
-		if (!full_list)
+		tmp = arg_check_split(argv[i]);
+		if (!tmp)
 			return (1);
 	// Debugging 1 arg
 		j = 0;
-		while (full_list[j])
+		while (tmp[j])
 		{
-			ft_printf("[%s]\n", full_list[j]);
+			ft_printf("[%s]\n", tmp[j]);
 			j++;
 		}
 	}
-	if (argc > 2)
-	{
-		while (argv[i])
-		{
-			j = 0;
-			tmp = arg_check_split(argv[i]);
-			if (!tmp)
-				return (1);
-
-			
-			i++;
-		}
-		
-	}
-
+	// if (argc > 2)
 	return (0);
 }

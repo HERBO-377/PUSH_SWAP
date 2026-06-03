@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/01 12:52:04 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/03 10:23:43 by daherman         ###   ########.fr       */
+/*   Created: 2026/06/03 10:23:01 by daherman          #+#    #+#             */
+/*   Updated: 2026/06/03 10:39:21 by daherman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include "libft.h"
-# include <limits.h>
-
-int	main(int arcg, char **argv);
-
-typedef struct s_node
+long	ft_atol(char *s)
 {
-	int		content;
-	struct s_node 	*next;
-	struct s_node 	*prev;
-}	t_node;
+	long	num;
+	int	i;
+	int	sign;
 
-#endif
+	num = 0;
+	while (s[i])
+	{
+		while (s[i] == '+' || s[i] == '-')
+		{
+			if (s[i] == '-')
+				sign *= -1;
+			i++;
+		}
+		while (s[i] >= '0' && s[i] <= '9')
+		{
+			num = num * 10 + (s[i] -'0');
+			i++;
+		}
+		return (nb * sign);
+	}
+}
