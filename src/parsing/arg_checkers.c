@@ -6,17 +6,17 @@
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 10:23:01 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/03 13:20:12 by daherman         ###   ########.fr       */
+/*   Updated: 2026/06/04 09:44:47 by daherman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // --- Printing Error\n in case of error
-int	error(void)
+int	error(int n)
 {
 	ft_printf("Error\n");
-	exit (1);
+	exit (n);
 }
 
 // ---  Check argument to remove spaces
@@ -26,7 +26,7 @@ char	**check_split(char *s)
 
 	arr = ft_split(s, ' ');
 	if (!arr || !arr[0])
-		return (error());
+		error(1);
 	return (arr);
 }
 
@@ -39,7 +39,7 @@ int	valid_num(char *s)
 	if (s[i] == '+' || s[i] == '-')
 		i++;
 	if (!ft_isdigit(s[i]))
-		return (0);
+		return (error(1));
 	while (s[i])
 	{
 		if (!ft_isdigit(s[i]))
@@ -53,8 +53,8 @@ int	valid_num(char *s)
 long	ft_atol(char *s)
 {
 	long	num;
-	int	i;
-	int	sign;
+	int		i;
+	int		sign;
 
 	i = 0;
 	num = 0;
@@ -67,18 +67,18 @@ long	ft_atol(char *s)
 			sign *= -1;
 		i++;
 	}
-	while (ft_isdigit(s[i]))
+	while (s[i] >= '0' && s[i] <= '9')
 	{
-		num = num * 10 + (s[i] -'0');
+		num = num * 10 + (s[i] - '0');
 		i++;
 	}
 	return (num * sign);
 }
 
-// --- Check the number is between INT_MAX and INT_MIN
+// --- Check if the number is between INT_MAX and INT_MIN
 int	check_range(long n)
 {
 	if (n > INT_MAX || n < INT_MIN)
-		return (error());
+		return (error(1));
 	return (1);
 }
