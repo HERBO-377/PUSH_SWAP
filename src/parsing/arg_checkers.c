@@ -6,14 +6,14 @@
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 10:23:01 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/04 09:44:47 by daherman         ###   ########.fr       */
+/*   Updated: 2026/06/04 12:36:50 by daherman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // --- Printing Error\n in case of error
-int	error(int n)
+void	error(int n)
 {
 	ft_printf("Error\n");
 	exit (n);
@@ -43,7 +43,7 @@ int	valid_num(char *s)
 	while (s[i])
 	{
 		if (!ft_isdigit(s[i]))
-			return (0);
+			return (error(1));
 		i++;
 	}
 	return (1);
