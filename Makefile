@@ -30,6 +30,11 @@ SRC_DIR = src
 SRC = \
       $(SRC_DIR)/main.c \
       $(SRC_DIR)/parsing/arg_checkers.c \
+      $(SRC_DIR)/stack/node_new.c \
+      $(SRC_DIR)/stack/node_addback.c \
+      $(SRC_DIR)/stack/node_addfront.c \
+      $(SRC_DIR)/stack/node_last.c \
+      $(SRC_DIR)/stack/node_clear.c \
 
 OBJ = $(SRC:.c=.o)
 

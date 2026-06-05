@@ -13,21 +13,29 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft.h"
+# include <stdlib.h>
+# include <unistd.h>
 # include <limits.h>
 
-char	**check_split(char *s);
-long	ft_atol(char *s);
-void		error(int n);
-int		valid_num(char *s);
-int		check_range(long n);
-
-typedef struct s_node
+typedef struct	s_node
 {
 	int				index;
 	int				content;
 	struct s_node	*next;
 	struct s_node	*prev;
 }	t_node;
+
+char	**check_split(char *s);
+long	ft_atol(char *s);
+void	error(int n);
+int		valid_num(char *s);
+int		check_range(long n);
+void	node_addback(t_node **lst, t_node *new);
+void	node_addfront(t_node **lst, t_node *new);
+void	node_clear(t_node **lst);
+t_node	*node_last(t_node *node);
+t_node	*node_new(int content);
+
+# include "libft.h"
 
 #endif

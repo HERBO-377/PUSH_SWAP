@@ -12,4 +12,15 @@
 
 #include "push_swap.h"
 
+void	build_stack(t_node **stack, char **nums)
+{
+	long	num;
+	t_node	*new;
+	int		i;
 
+	i = 0;
+	while (nums[i])
+	{
+		num = 
+	}
+}
