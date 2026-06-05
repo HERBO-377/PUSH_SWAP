@@ -6,7 +6,7 @@
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 12:52:04 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/04 12:37:10 by daherman         ###   ########.fr       */
+/*   Updated: 2026/06/05 17:36:59 by hfandino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 
 typedef struct	s_node
 {
-	int				index;
-	int				content;
-	struct s_node	*next;
+	int                             content; // numero original
+	int				index; // numero normalizado 
+	struct s_node	*next; //sig nodo.
 	struct s_node	*prev;
 }	t_node;
 
