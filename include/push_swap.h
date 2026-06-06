@@ -6,7 +6,7 @@
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 12:52:04 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/05 17:36:59 by hfandino         ###   ########.fr       */
+/*   Updated: 2026/06/06 14:56:59 by hfandino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ void	node_addfront(t_node **lst, t_node *new);
 void	node_clear(t_node **lst);
 t_node	*node_last(t_node *node);
 t_node	*node_new(int content);
+void	sa(t_node **a);
+void	sb(t_node **b);
+void	ss(t_node **a, t_node **b);
+void	pa(t_node **a, t_node **b);
+void	pb(t_node **a, t_node **b);
 
 # include "libft.h"
 
