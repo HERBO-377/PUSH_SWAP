@@ -13,7 +13,7 @@
 #include "push_swap.h"
 
 // --- Printing Error\n in case of error
-void	error(int n)
+int	error(int n)
 {
 	ft_printf("Error\n");
 	exit (n);

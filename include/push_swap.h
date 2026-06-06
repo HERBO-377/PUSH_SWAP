@@ -27,7 +27,7 @@ typedef struct	s_node
 
 char	**check_split(char *s);
 long	ft_atol(char *s);
-void	error(int n);
+int		error(int n);
 int		valid_num(char *s);
 int		check_range(long n);
 void	node_addback(t_node **lst, t_node *new);
