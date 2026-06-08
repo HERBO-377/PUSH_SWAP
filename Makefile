@@ -6,7 +6,7 @@
 #    By: daherman <daherman@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/01 11:07:29 by daherman          #+#    #+#              #
-#    Updated: 2026/06/06 15:00:05 by hfandino         ###   ########.fr        #
+#    Updated: 2026/06/08 09:50:04 by daherman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC_DIR = src
 SRC = \
       $(SRC_DIR)/main.c \
       $(SRC_DIR)/parsing/arg_checkers.c \
+      $(SRC_DIR)/parsing/build_stack.c \
       $(SRC_DIR)/stack/node_new.c \
       $(SRC_DIR)/stack/node_addback.c \
       $(SRC_DIR)/stack/node_addfront.c \
