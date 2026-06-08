@@ -6,7 +6,7 @@
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 12:52:04 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/08 09:48:37 by daherman         ###   ########.fr       */
+/*   Updated: 2026/06/08 13:08:50 by daherman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,17 @@ void	node_addfront(t_node **lst, t_node *new);
 void	node_clear(t_node **lst);
 t_node	*node_last(t_node *node);
 t_node	*node_new(int content);
+//ANALYSIS FUNCTIONS
+int	compute_disorder(t_node *stack);
 //OPERATIONS FUNCTIONS
 void	sa(t_node **a);
 void	sb(t_node **b);
 void	ss(t_node **a, t_node **b);
 void	pa(t_node **a, t_node **b);
 void	pb(t_node **a, t_node **b);
+void	ra(t_node **a);
+void	rb(t_node **b);
+void	rr(t_node **a, t_node **b);
 
 # include "libft.h"
 

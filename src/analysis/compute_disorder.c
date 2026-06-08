@@ -1,22 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   node_last.c                                        :+:      :+:    :+:   */
+/*   compute_disorder.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/08 10:33:23 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/08 10:33:25 by daherman         ###   ########.fr       */
+/*   Created: 2026/06/08 12:20:19 by daherman          #+#    #+#             */
+/*   Updated: 2026/06/08 12:59:35 by daherman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*node_last(t_node *node)
+int	compute_disorder(t_node *stack)
 {
-	if (!node)
-		return (NULL);
-	while (node->next)
-		node = node->next;
-	return (node);
+	t_node	*i;
+	t_node	*j;
+	int	mistakes;
+	int	total_pairs;
+
+	mistakes = 0;
+	total_pairs = 0;
+	i = stack;
+	while (i)
+	{
+		j = i->next;
+		while (j)
+		{
+			if (i->content > j->content)
+				mistakes++;
+			total_pairs++;
+			j = j->next;
+		}
+		i = i->next;
+	}
+	if (total_pairs == 0)
+		return (0);
+	return ((mistakes * 100) / total_pairs);
 }

@@ -6,7 +6,7 @@
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 09:21:07 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/08 10:26:17 by daherman         ###   ########.fr       */
+/*   Updated: 2026/06/08 13:13:16 by daherman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	main(int argc, char **argv)
 	int		i;
 	t_node	*stack;
 	char	**tmp;
+	int		mistake_index;
 
 	i = 1;
 	stack = NULL;
@@ -52,9 +53,6 @@ int	main(int argc, char **argv)
 		if (!tmp)
 			return (1);
 		build_stack(&stack, tmp);
-		print_list(stack);
-		ft_printf("\n");
-		print_list_reverse(stack);
 	}
 	if (argc > 2)
 	{
@@ -67,6 +65,8 @@ int	main(int argc, char **argv)
 			i++;
 		}
 	}
+	mistake_index = compute_disorder(stack);
+	ft_printf("MISTAKE INDEX:\n[%d%%]\n\n", mistake_index);
 	print_list(stack);
 	ft_printf("\n");
 	print_list_reverse(stack);

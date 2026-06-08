@@ -6,7 +6,7 @@
 #    By: daherman <daherman@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/01 11:07:29 by daherman          #+#    #+#              #
-#    Updated: 2026/06/08 09:50:04 by daherman         ###   ########.fr        #
+#    Updated: 2026/06/08 13:16:09 by daherman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,10 @@ SRC = \
       $(SRC_DIR)/stack/node_addfront.c \
       $(SRC_DIR)/stack/node_last.c \
       $(SRC_DIR)/stack/node_clear.c \
+      $(SRC_DIR)/analysis/compute_disorder.c \
       $(SRC_DIR)/operations/swap.c \
-      $(SRC_DIR)/operations/push.c
+      $(SRC_DIR)/operations/push.c \
+      $(SRC_DIR)/operations/rotate.c \
 
 OBJ = $(SRC:.c=.o)
 
