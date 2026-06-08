@@ -1,0 +1,17 @@
+POR HACER:
+
+- funcion copiar lista en arr
+- funcion ordenar arr
+- funcion asiganr index a c/ elemento del arr
+- asignar index a c/ ->content de stack
+- crear reglas en base al indice de errores 0-100% (--simple, --complex, etc)
+- funcion para detectar el tipo de algoritmo en argunmentos (--simple, --complex)
+
+HECHO:
+
+DAVID:
+- sorting
+
+HEIDER:
+- operadores
+ 
