@@ -6,7 +6,7 @@
 #    By: daherman <daherman@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/01 11:07:29 by daherman          #+#    #+#              #
-#    Updated: 2026/06/08 13:16:09 by daherman         ###   ########.fr        #
+#    Updated: 2026/06/08 13:36:22 by hfandino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRC = \
       $(SRC_DIR)/operations/swap.c \
       $(SRC_DIR)/operations/push.c \
       $(SRC_DIR)/operations/rotate.c \
+	  $(SRC_DIR)/operations/reverse_rotate.c \
 
 OBJ = $(SRC:.c=.o)
 
