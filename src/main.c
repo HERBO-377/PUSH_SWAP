@@ -20,20 +20,6 @@ static void print_list(t_node *lst)
         ft_printf("content = %d | index = %d\n", lst->content, lst->index);
         lst = lst->next;
     }
-    ft_printf("NULL\n\n");
-}
-
-static void print_list_reverse(t_node *lst)
-{
-	ft_printf("REVERSELIST TO CHECK ->prev\nREVERSE STACK:\n");
-	while (lst && lst->next)
-        lst = lst->next;
-
-	while (lst)
-	{
-		ft_printf("%d\n", lst->content);
-		lst = lst->prev;
-	}
 }
 
 int	main(int argc, char **argv)
@@ -41,7 +27,6 @@ int	main(int argc, char **argv)
 	int		i;
 	t_node	*stack;
 	char	**tmp;
-	int		mistake_index;
 
 	i = 1;
 	stack = NULL;
@@ -65,10 +50,9 @@ int	main(int argc, char **argv)
 			i++;
 		}
 	}
-	mistake_index = compute_disorder(stack);
-	ft_printf("MISTAKE INDEX:\n[%d%%]\n\n", mistake_index);
+	index_stack(stack);
+	ft_printf("MISTAKE INDEX:\n[%d%%]\n\n", compute_disorder(stack));
 	print_list(stack);
 	ft_printf("\n");
-	print_list_reverse(stack);
 	return (0);
 }

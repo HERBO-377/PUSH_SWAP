@@ -12,6 +12,10 @@
 
 NAME = push_swap
 
+# --- FOR TESTS ---
+TEST_INDEX = test_index
+TEST_NODE = test_node
+
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
@@ -37,12 +41,29 @@ SRC = \
       $(SRC_DIR)/stack/node_last.c \
       $(SRC_DIR)/stack/node_clear.c \
       $(SRC_DIR)/analysis/compute_disorder.c \
+      $(SRC_DIR)/analysis/index_utils.c \
+      $(SRC_DIR)/analysis/index.c \
       $(SRC_DIR)/operations/swap.c \
       $(SRC_DIR)/operations/push.c \
       $(SRC_DIR)/operations/rotate.c \
       $(SRC_DIR)/operations/reverse_rotate.c
 
 OBJ = $(SRC:.c=.o)
+
+STACK_SRC = \
+	$(SRC_DIR)/stack/node_new.c \
+	$(SRC_DIR)/stack/node_addback.c \
+	$(SRC_DIR)/stack/node_addfront.c \
+	$(SRC_DIR)/stack/node_last.c \
+	$(SRC_DIR)/stack/node_clear.c
+
+INDEX_SRC = \
+	$(SRC_DIR)/analysis/index.c \
+	$(SRC_DIR)/analysis/index_utils.c
+
+PARSING_SRC = \
+	src/parsing/arg_checkers.c \
+	src/parsing/build_stack.c
 
 # --- RULES ---
 
@@ -61,6 +82,26 @@ $(NAME): $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
+test_index:
+	$(MAKE) -C $(LIBFT_DIR)
+	$(CC) $(CFLAGS) $(INCLUDES) \
+	tests/test_index.c \
+	$(STACK_SRC) \
+	$(INDEX_SRC) \
+	$(PARSING_SRC) \
+	$(LIBFT) \
+	-o $(TEST_INDEX)
+	./$(TEST_INDEX)
+
+test_node:
+	$(MAKE) -C $(LIBFT_DIR)
+	$(CC) $(CFLAGS) $(INCLUDES) \
+	tests/test_node.c \
+	$(STACK_SRC) \
+	$(LIBFT) \
+	-o $(TEST_NODE)
+	./$(TEST_NODE)
+
 clean:
 	rm -f $(OBJ)
 	$(MAKE) -C $(LIBFT_DIR) clean
@@ -71,4 +112,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+tclean:
+	rm -f $(TEST_NODE) $(TEST_INDEX)
+
+.PHONY: all clean fclean re tclean
