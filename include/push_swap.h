@@ -60,5 +60,6 @@ void	rrb(t_node **b);
 void	rrr(t_node **a, t_node **b);
 
 # include "libft.h"
+# include "flag_struct.h"
 
 #endif
