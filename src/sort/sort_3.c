@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_order.c                                      :+:      :+:    :+:   */
+/*   sort_3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hfandino <hfandino@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/10 11:42:14 by hfandino          #+#    #+#             */
-/*   Updated: 2026/06/10 13:10:41 by hfandino         ###   ########.fr       */
+/*   Created: 2026/06/10 12:10:42 by hfandino          #+#    #+#             */
+/*   Updated: 2026/06/10 13:11:27 by hfandino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "push_swap.h"
-
-// --- Check if the stack need to be sorted before call any sort function
-int	check_order(t_node *stack)
+void	sort_3(t_node **a)
 {
-	if (!stack || !stack->next)
-		return (1);
-	while (stack->next)
-	{
-		if (stack->content > stack->next->content)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
+	t_node	*first;
+	t_node	*second;
+	t_node	*third;
+
+	if (check_order(*a))
+		return ;
+
+	first = *a;
+	second = first-next;
+	third = second->next;
+	if ((first->content > second->content) && (second->content < third->content))
+		ra(a);
+	
+	
+	
+
 }
