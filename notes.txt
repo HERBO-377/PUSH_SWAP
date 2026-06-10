@@ -1,13 +1,217 @@
-POR HACER:
+🟩 HECHO
 
-- crear reglas en base al indice de errores 0-100% (--simple, --complex, etc)
-- funcion para detectar el tipo de algoritmo en argunmentos (--simple, --complex)
+🟥 FALTA
 
-HECHO:
+🟨 PARCIAL / A REVISAR
 
-DAVID:
-- sorting
 
-HEIDER:
-- operadores
- 
+
+.
+
+├── 🟨 Makefile
+
+├── 🟥 README.md
+
+├── 🟩 include
+
+│   └── 🟨 push_swap.h
+
+├── 🟨 notes.txt
+
+├── 🟩 src
+
+│   ├── 🟩 analysis
+
+│   │   ├── 🟩 compute_disorder.c
+
+│   │   ├── 🟩 index.c
+
+│   │   └── 🟩 index_utils.c
+
+│   ├── 🟨 main.c
+
+│   ├── 🟩 operations
+
+│   │   ├── 🟩 push.c
+
+│   │   ├── 🟩 reverse_rotate.c
+
+│   │   ├── 🟩 rotate.c
+
+│   │   └── 🟩 swap.c
+
+│   ├── 🟨 parsing
+
+│   │   ├── 🟨 arg_checkers.c
+
+│   │   └── 🟨 build_stack.c
+
+│   ├── 🟩 stack
+
+│   │   ├── 🟩 node_addback.c
+
+│   │   ├── 🟩 node_addfront.c
+
+│   │   ├── 🟩 node_clear.c
+
+│   │   ├── 🟩 node_last.c
+
+│   │   ├── 🟩 node_new.c
+
+│   │   └── 🟥 is_sorted.c
+
+│   ├── 🟥 sort
+
+│   │   ├── 🟥 sort_2.c
+
+│   │   ├── 🟥 sort_3.c
+
+│   │   └── 🟥 sort_5.c
+
+│   └── 🟥 strategies
+
+│       ├── 🟥 simple_sort.c
+
+│       ├── 🟥 medium_sort.c
+
+│       ├── 🟥 complex_sort.c
+
+│       ├── 🟥 adaptive_sort.c
+
+│       └── 🟥 strategy_select.c
+
+└── 🟨 tests
+
+    ├── 🟩 test_index.c
+
+    ├── 🟩 test_node.c
+
+    ├── 🟥 test_operations.c
+
+    ├── 🟥 test_sort_small.c
+
+    └── 🟥 test_strategies.c
+
+
+
+🟦 HEIDER
+
+
+
+🟩 Ya realizado
+
+
+
+* sa, sb, ss
+
+* pa, pb
+
+* ra, rb, rr
+
+* rra, rrb, rrr
+
+
+
+🟥 Pendiente
+
+
+
+* is_sorted → detectar si el stack ya está ordenado.
+
+* sort_2 → ordenar 2 números.
+
+* sort_3 → ordenar 3 números usando operaciones mínimas.
+
+* sort_5 → ordenar hasta 5 números apoyándose en stack B.
+
+* complex_sort (Radix) → implementar el algoritmo principal O(n log n).
+
+* test_operations → validar todas las operaciones.
+
+* test_sort_small → validar los algoritmos pequeños.
+
+
+
+📌 Resumen:
+
+Responsable de toda la lógica de ordenación y del algoritmo principal del proyecto.
+
+
+
+---
+
+
+
+🟨 DAVID
+
+
+
+🟩 Ya realizado
+
+
+
+* build_stack
+
+* arg_checkers
+
+* index_stack
+
+* compute_disorder
+
+
+
+🟥 Pendiente
+
+
+
+* simple_sort (O(n²)) → algoritmo sencillo para listas pequeñas o poco optimizado.
+
+* medium_sort (O(n√n)) → algoritmo intermedio basado en chunks.
+
+* adaptive_sort → decidir automáticamente qué algoritmo usar.
+
+* strategy_select → selector de estrategia según flags o desorden.
+
+* integración de flags → --simple, --medium, --complex, --adaptive.
+
+* main final → conectar todas las piezas del proyecto.
+
+* gestión de errores → asegurar salidas limpias y control de fallos.
+
+
+
+📌 Resumen:
+
+Responsable de la arquitectura global, selección de estrategias e integración completa del programa.
+
+
+
+---
+
+
+
+🟪 AMBOS
+
+
+
+🟥 Pendiente
+
+
+
+* checker
+
+* benchmarks
+
+* README
+
+* documentación de IA
+
+* valgrind
+
+* norminette
+
+* pruebas finales
+
+* preparación de la evaluación
+
+
