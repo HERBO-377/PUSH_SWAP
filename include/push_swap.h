@@ -26,8 +26,7 @@ long	ft_atol(char *s);
 int		error(int n);
 int		valid_num(char *s);
 int		check_range(long n);
-int		check_duplicate(t_node *stack, int n);
-void	build_stack(t_node **stack, char **nums);
+t_node	*build_stack(char **argv);
 t_flags	check_flag(char **argv);
 //-------STACK FUNCTIONS
 void	node_addback(t_node **lst, t_node *new);

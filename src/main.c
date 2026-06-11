@@ -24,29 +24,14 @@ static void print_list(t_node *lst)
 
 int	main(int argc, char **argv)
 {
-	int		i;
 	t_node	*stack;
-	char	**tmp;
 	t_flags	flags;
 
-	i = 1;
 	stack = NULL;
 	if (argc < 2)
 		return (0);
 	flags = check_flag(argv);
-	while (argv[i])
-	{
-		if (argv[i][0] == '-' && argv[i][1] == '-')
-		{
-			i++;
-			continue ;
-		}
-		tmp = check_split(argv[i]);
-		if (!tmp)
-			return (1);
-		build_stack(&stack, tmp);
-		i++;
-	}
+	stack = build_stack(argv);
 	index_stack(stack);
 	ft_printf("MISTAKE INDEX:\n[%d%%]\n\n", compute_disorder(stack));
 	print_list(stack);

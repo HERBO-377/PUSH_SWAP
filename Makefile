@@ -33,7 +33,7 @@ SRC_DIR = src
 
 SRC = \
       $(SRC_DIR)/main.c \
-      $(SRC_DIR)/parsing/arg_checkers.c \
+      $(SRC_DIR)/parsing/parse_utils.c \
       $(SRC_DIR)/parsing/build_stack.c \
       $(SRC_DIR)/parsing/check_flag.c \
       $(SRC_DIR)/stack/node_new.c \

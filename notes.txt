@@ -143,7 +143,12 @@ Responsable de toda la lógica de ordenación y del algoritmo principal del proy
 
 
 🟨 DAVID
-
+[< NOTAS: ---------------------------------------------------------------
+	-Norminette: libft/ft_strcmp, include/*_struct, 
+		     parsing/check_flag, parsing/parse_arg,
+		     /analysis - all files,
+		     /dispatch - all files
+------------------------------------------------------------------------>]
 
 
 🟩 Ya realizado

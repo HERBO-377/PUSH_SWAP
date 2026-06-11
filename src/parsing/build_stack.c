@@ -12,7 +12,20 @@
 
 #include "push_swap.h"
 
-int	check_duplicate(t_node *stack, int num)
+static void	free_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}
+
+static int	check_duplicate(t_node *stack, int num)
 {
 	while (stack)
 	{
@@ -23,19 +36,65 @@ int	check_duplicate(t_node *stack, int num)
 	return (0);
 }
 
-void	build_stack(t_node **stack, char **nums)
+static int	check_num(char *arg)
 {
 	long	n;
-	int		i;
 
-	i = 0;
-	while (nums[i])
+	valid_num(arg);
+	n = ft_atol(arg);
+	check_range(n);
+	return ((int)n);
+}
+
+t_node	*build_stack(char **argv)
+{
+	int	i;
+	int	j;
+	long	n;
+	t_node	*stack;
+	char	**tmp;
+
+	i = 1;
+	stack = NULL;
+	while (argv[i])
 	{
-		valid_num(nums[i]);
-		n = ft_atol(nums[i]);
-		check_range(n);
-		check_duplicate(*stack, (int)n);
-		node_addback(stack, node_new((int)n));
+		if (argv[i][0] == '-' && argv[i][1] == '-')
+		{
+			i++;
+			continue ;
+		}
+		tmp = check_split(argv[i]);
+		if (!tmp)
+			error(1);
+		j = 0;
+		while(tmp[j])
+		{
+			n = check_num(tmp[j]);
+			check_duplicate(stack, n);
+			node_addback(&stack, node_new(n));
+			j++;
+		}
+		free_split(tmp);
 		i++;
 	}
+	return (stack);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
