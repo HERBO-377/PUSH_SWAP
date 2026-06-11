@@ -6,7 +6,7 @@
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 12:52:04 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/10 11:51:38 by hfandino         ###   ########.fr       */
+/*   Updated: 2026/06/11 17:08:22 by hfandino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	sort_arr(int *nums, int size);
 int	find_index(int *nums, int size, int content);
 void    assign_index(int *nums, t_node *stack, int size);
 void    index_stack(t_node *stack);
+int	check_order(t_node *stack);
 //-------OPERATIONS FUNCTIONS
 void	sa(t_node **a);
 void	sb(t_node **b);
@@ -56,6 +57,9 @@ void	rrb(t_node **b);
 void	rrr(t_node **a, t_node **b);
 //-------SORT FUNTIONS
 void	sort_2(t_node **a);
+void    sort_3(t_node **a);
+void	sort_5(t_node **a, t_node **b);
+void	complex_sort(t_node **a, t_node **b);
 
 # include "libft.h"
 

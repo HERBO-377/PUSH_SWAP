@@ -6,7 +6,7 @@
 #    By: daherman <daherman@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/01 11:07:29 by daherman          #+#    #+#              #
-#    Updated: 2026/06/10 11:50:06 by hfandino         ###   ########.fr        #
+#    Updated: 2026/06/11 17:07:34 by hfandino         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,12 @@ SRC = \
       $(SRC_DIR)/operations/push.c \
       $(SRC_DIR)/operations/rotate.c \
       $(SRC_DIR)/operations/reverse_rotate.c \
-      $(SRC_DIR)/sort/sort_2.c
+      $(SRC_DIR)/sort/sort_2.c \
+	  $(SRC_DIR)/sort/sort_3.c \
+      $(SRC_DIR)/sort/sort_5.c \
+      $(SRC_DIR)/sort/complex_sort.c \
+	  $(SRC_DIR)/dispatch/check_order.c
+
 
 OBJ = $(SRC:.c=.o)
 

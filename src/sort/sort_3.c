@@ -6,9 +6,38 @@
 /*   By: hfandino <hfandino@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:10:42 by hfandino          #+#    #+#             */
-/*   Updated: 2026/06/10 13:11:27 by hfandino         ###   ########.fr       */
+/*   Updated: 2026/06/11 15:46:18 by hfandino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "push_swap.h"
+
+static void	sort_3_cases(t_node **a, t_node *first,
+		t_node *second, t_node *third)
+{
+	if (first->content < second->content
+		&& second->content > third->content
+		&& first->content < third->content)
+	{
+		sa(a);
+		ra(a);
+	}
+	else if (first->content > second->content
+		&& first->content < third->content)
+		sa(a);
+	else if (first->content < second->content
+		&& first->content > third->content)
+		rra(a);
+	else if (first->content > second->content
+		&& second->content < third->content
+		&& first->content > third->content)
+		ra(a);
+	else if (first->content > second->content
+		&& second->content > third->content)
+	{
+		sa(a);
+		rra(a);
+	}
+}
 
 void	sort_3(t_node **a)
 {
@@ -16,16 +45,12 @@ void	sort_3(t_node **a)
 	t_node	*second;
 	t_node	*third;
 
+	if (!a || !*a || !(*a)->next || !(*a)->next->next)
+		return ;
 	if (check_order(*a))
 		return ;
-
 	first = *a;
-	second = first-next;
+	second = first->next;
 	third = second->next;
-	if ((first->content > second->content) && (second->content < third->content))
-		ra(a);
-	
-	
-	
-
+	sort_3_cases(a, first, second, third);
 }
