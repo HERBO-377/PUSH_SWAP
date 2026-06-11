@@ -16,14 +16,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include "node_struct.h"
+# include "flag_struct.h"
+# include "parse_struct.h"
 
-typedef struct	s_node
-{
-	int                             content; // numero original
-	int				index; // numero normalizado 
-	struct s_node	*next; //sig nodo.
-	struct s_node	*prev;
-}	t_node;
 //-------PARSING FUNCTIONS
 char	**check_split(char *s);
 long	ft_atol(char *s);
@@ -32,6 +28,7 @@ int		valid_num(char *s);
 int		check_range(long n);
 int		check_duplicate(t_node *stack, int n);
 void	build_stack(t_node **stack, char **nums);
+t_flags	check_flag(char **argv);
 //-------STACK FUNCTIONS
 void	node_addback(t_node **lst, t_node *new);
 void	node_addfront(t_node **lst, t_node *new);
@@ -62,6 +59,5 @@ void	rrr(t_node **a, t_node **b);
 void	sort_2(t_node **a);
 
 # include "libft.h"
-# include "flag_struct.h"
 
 #endif

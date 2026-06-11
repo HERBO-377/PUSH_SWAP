@@ -6,7 +6,7 @@ typedef struct	s_flags
 	int	simple;
 	int	medium;
 	int	complex;
-	int	adaptative;
+	int	adaptive;
 }	t_flags;
 
 #endif

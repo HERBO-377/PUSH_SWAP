@@ -35,6 +35,7 @@ SRC = \
       $(SRC_DIR)/main.c \
       $(SRC_DIR)/parsing/arg_checkers.c \
       $(SRC_DIR)/parsing/build_stack.c \
+      $(SRC_DIR)/parsing/check_flag.c \
       $(SRC_DIR)/stack/node_new.c \
       $(SRC_DIR)/stack/node_addback.c \
       $(SRC_DIR)/stack/node_addfront.c \
@@ -47,7 +48,7 @@ SRC = \
       $(SRC_DIR)/operations/push.c \
       $(SRC_DIR)/operations/rotate.c \
       $(SRC_DIR)/operations/reverse_rotate.c \
-	  $(SRC_DIR)/sort/sort_2.c
+      $(SRC_DIR)/sort/sort_2.c
 
 OBJ = $(SRC:.c=.o)
 
