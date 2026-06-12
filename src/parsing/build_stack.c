@@ -46,55 +46,37 @@ static int	check_num(char *arg)
 	return ((int)n);
 }
 
+static void     process_nums(char **tmp, t_node **stack)
+{
+	int     i;
+	int     n;
+	i = 0;
+	while (tmp[i])
+	{
+	n = check_num(tmp[i]);
+	check_duplicate(*stack, n);
+	node_addback(stack, node_new(n));
+	i++;
+	}
+}
+
 t_node	*build_stack(char **argv)
 {
 	int	i;
-	int	j;
-	long	n;
 	t_node	*stack;
 	char	**tmp;
 
-	i = 1;
+	i = skip_flag(argv);
 	stack = NULL;
 	while (argv[i])
 	{
-		if (argv[i][0] == '-' && argv[i][1] == '-')
-		{
-			i++;
-			continue ;
-		}
-		tmp = check_split(argv[i]);
-		if (!tmp)
+		if (!(tmp = check_split(argv[i])))
 			error(1);
-		j = 0;
-		while(tmp[j])
-		{
-			n = check_num(tmp[j]);
-			check_duplicate(stack, n);
-			node_addback(&stack, node_new(n));
-			j++;
-		}
+		process_nums(tmp, &stack);
 		free_split(tmp);
 		i++;
 	}
+	if (!stack)
+		error(1);
 	return (stack);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

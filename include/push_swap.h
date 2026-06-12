@@ -26,6 +26,7 @@ long	ft_atol(char *s);
 int		error(int n);
 int		valid_num(char *s);
 int		check_range(long n);
+int		skip_flag(char **argv);
 t_node	*build_stack(char **argv);
 t_flags	check_flag(char **argv);
 //-------STACK FUNCTIONS

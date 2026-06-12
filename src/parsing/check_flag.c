@@ -44,29 +44,30 @@ static void	apply_flag(char *arg, t_flags *f)
 		error(1);
 }
 
+int	skip_flag(char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (argv[i] && is_flag(argv[i]))
+		i++;
+	return (i);
+}
+
 // --- Validates if flags are correctly written, located and no duplicated 
 t_flags	check_flag(char **argv)
 {
 	t_flags	flags;
 	int	i;
 	int	count_flags;
-	int	data_start;
 
 	i = 1;
 	count_flags = 0;
-	data_start = 0;
 	flags = init_flags();
-	while (argv[i])
+	while (argv[i] && is_flag(argv[i]))
 	{
-		if (is_flag(argv[i]))
-		{
-			if(data_start)
-				error(1);
-			apply_flag(argv[i], &flags);
-			count_flags++;
-		}
-		else
-			data_start = 1;
+		apply_flag(argv[i], &flags);
+		count_flags++;
 		i++;
 	}
 	if (count_flags > 1)
