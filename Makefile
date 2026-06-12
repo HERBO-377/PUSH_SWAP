@@ -52,12 +52,11 @@ SRC = \
       $(SRC_DIR)/sort/sort_2.c \
       $(SRC_DIR)/sort/sort_3.c \
       $(SRC_DIR)/sort/sort_5.c \
-      $(SRC_DIR)/sort/complex_sort.c \
       $(SRC_DIR)/dispatch/dispatch.c \
       $(SRC_DIR)/strategies/simple_sort.c \
       $(SRC_DIR)/strategies/medium_sort.c \
-      $(SRC_DIR)/strategies/adaptative_sort.c 
-
+      $(SRC_DIR)/strategies/adaptative_sort.c \
+      $(SRC_DIR)/strategies/complex_sort.c \
 
 OBJ = $(SRC:.c=.o)
 
