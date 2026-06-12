@@ -24,17 +24,26 @@ static void print_list(t_node *lst)
 
 int	main(int argc, char **argv)
 {
-	t_node	*stack;
+	t_node	*a;
+	t_node	*b;
 	t_flags	flags;
 
-	stack = NULL;
+	a = NULL;
+	b = NULL;
 	if (argc < 2)
 		return (0);
 	flags = check_flag(argv);
-	stack = build_stack(argv);
-	index_stack(stack);
-	ft_printf("MISTAKE INDEX:\n[%d%%]\n\n", compute_disorder(stack));
-	print_list(stack);
+	a = build_stack(argv);
+	index_stack(a);
+	ft_printf("SOLUTIONS: (program real output)\n\n");
+	dispatch(&a, &b, flags);
+
+
+//------- DEBUGG ---------
+
+	ft_printf("\n\nDEBUGGING: (no disorder expected) \n\n");
+	ft_printf("MISTAKE INDEX:\n[%d%%]\n\n", compute_disorder(a));
+	print_list(a);
 	ft_printf("\n");
 	if (flags.simple)
 		ft_printf("\n-SIMPLE MODE-\n");

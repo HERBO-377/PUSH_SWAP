@@ -61,7 +61,8 @@ void	sort_2(t_node **a);
 void    sort_3(t_node **a);
 void	sort_5(t_node **a, t_node **b);
 void	complex_sort(t_node **a, t_node **b);
-
+//-------DISPATCH FUNCTIONS
+void	dispatch(t_node **a, t_node **b, t_flags flags);
 # include "libft.h"
 
 #endif

@@ -44,15 +44,16 @@ SRC = \
       $(SRC_DIR)/analysis/compute_disorder.c \
       $(SRC_DIR)/analysis/index_utils.c \
       $(SRC_DIR)/analysis/index.c \
+      $(SRC_DIR)/analysis/check_order.c \
       $(SRC_DIR)/operations/swap.c \
       $(SRC_DIR)/operations/push.c \
       $(SRC_DIR)/operations/rotate.c \
       $(SRC_DIR)/operations/reverse_rotate.c \
       $(SRC_DIR)/sort/sort_2.c \
-	  $(SRC_DIR)/sort/sort_3.c \
+	$(SRC_DIR)/sort/sort_3.c \
       $(SRC_DIR)/sort/sort_5.c \
       $(SRC_DIR)/sort/complex_sort.c \
-	  $(SRC_DIR)/dispatch/check_order.c
+      $(SRC_DIR)/dispatch/dispatch.c
 
 
 OBJ = $(SRC:.c=.o)
