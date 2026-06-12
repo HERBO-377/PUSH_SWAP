@@ -6,7 +6,7 @@
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 12:52:04 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/11 17:08:22 by hfandino         ###   ########.fr       */
+/*   Updated: 2026/06/12 18:27:16 by hfandino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,9 @@ void	sort_2(t_node **a);
 void    sort_3(t_node **a);
 void	sort_5(t_node **a, t_node **b);
 void	complex_sort(t_node **a, t_node **b);
+void    simple_sort(t_node **a, t_node **b);
+void	medium_sort(t_node **a, t_node **b);
+void	adaptive_sort(t_node **a, t_node **b);
 //-------DISPATCH FUNCTIONS
 void	dispatch(t_node **a, t_node **b, t_flags flags);
 # include "libft.h"
