@@ -6,10 +6,9 @@
 /*   By: hfandino <hfandino@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 11:42:14 by hfandino          #+#    #+#             */
-/*   Updated: 2026/06/10 13:10:41 by hfandino         ###   ########.fr       */
+/*   Updated: 2026/06/13 12:19:24 by hfandino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 

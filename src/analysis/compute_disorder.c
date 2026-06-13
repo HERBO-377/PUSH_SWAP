@@ -6,7 +6,7 @@
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 12:20:19 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/08 12:59:35 by daherman         ###   ########.fr       */
+/*   Updated: 2026/06/13 12:15:47 by hfandino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	compute_disorder(t_node *stack)
 {
 	t_node	*i;
 	t_node	*j;
-	int	mistakes;
-	int	total_pairs;
+	int		mistakes;
+	int		total_pairs;
 
 	mistakes = 0;
 	total_pairs = 0;

@@ -6,7 +6,7 @@
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 12:33:35 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/08 09:57:51 by daherman         ###   ########.fr       */
+/*   Updated: 2026/06/13 12:25:15 by hfandino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	free_split(char **split)
 	free(split);
 }
 
-static int	check_duplicate(t_node *stack, int num)
+static void	check_duplicate(t_node *stack, int num)
 {
 	while (stack)
 	{
@@ -33,7 +33,6 @@ static int	check_duplicate(t_node *stack, int num)
 			error(1);
 		stack = stack->next;
 	}
-	return (0);
 }
 
 static int	check_num(char *arg)
@@ -46,23 +45,24 @@ static int	check_num(char *arg)
 	return ((int)n);
 }
 
-static void     process_nums(char **tmp, t_node **stack)
+static void	process_nums(char **tmp, t_node **stack)
 {
-	int     i;
-	int     n;
+	int	i;
+	int	n;
+
 	i = 0;
 	while (tmp[i])
 	{
-	n = check_num(tmp[i]);
-	check_duplicate(*stack, n);
-	node_addback(stack, node_new(n));
-	i++;
+		n = check_num(tmp[i]);
+		check_duplicate(*stack, n);
+		node_addback(stack, node_new(n));
+		i++;
 	}
 }
 
 t_node	*build_stack(char **argv)
 {
-	int	i;
+	int		i;
 	t_node	*stack;
 	char	**tmp;
 
@@ -70,7 +70,8 @@ t_node	*build_stack(char **argv)
 	stack = NULL;
 	while (argv[i])
 	{
-		if (!(tmp = check_split(argv[i])))
+		tmp = check_split(argv[i]);
+		if (!tmp)
 			error(1);
 		process_nums(tmp, &stack);
 		free_split(tmp);

@@ -6,21 +6,21 @@
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 12:52:04 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/12 18:27:16 by hfandino         ###   ########.fr       */
+/*   Updated: 2026/06/13 12:09:36 by hfandino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <limits.h>
-# include "node_struct.h"
 # include "flag_struct.h"
+# include "libft.h"
+# include "node_struct.h"
 # include "parse_struct.h"
 
-//-------PARSING FUNCTIONS
+/* PARSING FUNCTIONS */
 char	**check_split(char *s);
 long	ft_atol(char *s);
 int		error(int n);
@@ -29,22 +29,25 @@ int		check_range(long n);
 int		skip_flag(char **argv);
 t_node	*build_stack(char **argv);
 t_flags	check_flag(char **argv);
-//-------STACK FUNCTIONS
+
+/* STACK FUNCTIONS */
 void	node_addback(t_node **lst, t_node *new);
 void	node_addfront(t_node **lst, t_node *new);
 void	node_clear(t_node **lst);
 t_node	*node_last(t_node *node);
 t_node	*node_new(int content);
-//-------ANALYSIS FUNCTIONS
-int	compute_disorder(t_node *stack);
-int	stack_size(t_node *stack);
-int	*stack_to_arr(t_node *stack);
+
+/* ANALYSIS FUNCTIONS */
+int		compute_disorder(t_node *stack);
+int		stack_size(t_node *stack);
+int		*stack_to_arr(t_node *stack);
 void	sort_arr(int *nums, int size);
-int	find_index(int *nums, int size, int content);
-void    assign_index(int *nums, t_node *stack, int size);
-void    index_stack(t_node *stack);
-int	check_order(t_node *stack);
-//-------OPERATIONS FUNCTIONS
+int		find_index(int *nums, int size, int content);
+void	assign_index(int *nums, t_node *stack, int size);
+void	index_stack(t_node *stack);
+int		check_order(t_node *stack);
+
+/* OPERATIONS FUNCTIONS */
 void	sa(t_node **a);
 void	sb(t_node **b);
 void	ss(t_node **a, t_node **b);
@@ -56,16 +59,17 @@ void	rr(t_node **a, t_node **b);
 void	rra(t_node **a);
 void	rrb(t_node **b);
 void	rrr(t_node **a, t_node **b);
-//-------SORT FUNTIONS
+
+/* SORT FUNCTIONS */
 void	sort_2(t_node **a);
-void    sort_3(t_node **a);
+void	sort_3(t_node **a);
 void	sort_5(t_node **a, t_node **b);
 void	complex_sort(t_node **a, t_node **b);
-void    simple_sort(t_node **a, t_node **b);
+void	simple_sort(t_node **a, t_node **b);
 void	medium_sort(t_node **a, t_node **b);
 void	adaptive_sort(t_node **a, t_node **b);
-//-------DISPATCH FUNCTIONS
+
+/* DISPATCH FUNCTIONS */
 void	dispatch(t_node **a, t_node **b, t_flags flags);
-# include "libft.h"
 
 #endif

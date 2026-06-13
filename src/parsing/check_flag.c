@@ -1,7 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_flag.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hfandino <hfandino@student.42barcelona.co  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/13 12:23:43 by hfandino          #+#    #+#             */
+/*   Updated: 2026/06/13 12:24:23 by hfandino         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-// --- Declaration of values for flag-structure
-// 	all = 0 || all = off
 static t_flags	init_flags(void)
 {
 	t_flags	f;
@@ -13,8 +23,6 @@ static t_flags	init_flags(void)
 	return (f);
 }
 
-// --- Detect if a flag was given as argument
-// 	0 = off (no) || 1 = on (yes)
 static int	is_flag(char *arg)
 {
 	if (ft_strcmp(arg, "--simple") == 0)
@@ -28,8 +36,6 @@ static int	is_flag(char *arg)
 	return (0);
 }
 
-// --- Detect specific flag in the argument and activate it
-// 	0 = off || 1 = on
 static void	apply_flag(char *arg, t_flags *f)
 {
 	if (ft_strcmp(arg, "--simple") == 0)
@@ -54,12 +60,11 @@ int	skip_flag(char **argv)
 	return (i);
 }
 
-// --- Validates if flags are correctly written, located and no duplicated 
 t_flags	check_flag(char **argv)
 {
 	t_flags	flags;
-	int	i;
-	int	count_flags;
+	int		i;
+	int		count_flags;
 
 	i = 1;
 	count_flags = 0;

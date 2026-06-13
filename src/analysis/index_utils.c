@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   index_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hfandino <hfandino@student.42barcelona.co  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/13 12:17:11 by hfandino          #+#    #+#             */
+/*   Updated: 2026/06/13 12:19:01 by hfandino         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 // --- Get size of STACK_A
 int	stack_size(t_node *stack)
 {
 	int	i;
-	
+
 	i = 0;
 	while (stack)
 	{
@@ -54,7 +66,7 @@ void	sort_arr(int *nums, int size)
 				nums[j] = nums[j + 1];
 				nums[j + 1] = tmp;
 			}
-			j++;	
+			j++;
 		}
 		i++;
 	}
