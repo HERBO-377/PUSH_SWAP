@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arg_checkers.c                                     :+:      :+:    :+:   */
+/*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 10:23:01 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/04 12:36:50 by daherman         ###   ########.fr       */
+/*   Updated: 2026/06/15 10:30:27 by daherman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ int	valid_num(char *s)
 	if (s[i] == '+' || s[i] == '-')
 		i++;
 	if (!ft_isdigit(s[i]))
-		return (error(1));
+		return (0);
 	while (s[i])
 	{
 		if (!ft_isdigit(s[i]))
-			return (error(1));
+			return (0);
 		i++;
 	}
 	return (1);
@@ -79,6 +79,6 @@ long	ft_atol(char *s)
 int	check_range(long n)
 {
 	if (n > INT_MAX || n < INT_MIN)
-		return (error(1));
+		return (0);
 	return (1);
 }

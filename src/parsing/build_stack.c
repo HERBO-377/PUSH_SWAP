@@ -6,7 +6,7 @@
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 12:33:35 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/13 12:25:15 by hfandino         ###   ########.fr       */
+/*   Updated: 2026/06/15 10:52:12 by daherman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,23 +25,34 @@ static void	free_split(char **split)
 	free(split);
 }
 
-static void	check_duplicate(t_node *stack, int num)
+static int	check_duplicate(t_node *stack, int num)
 {
 	while (stack)
 	{
 		if (stack->content == num)
-			error(1);
+			return (0);
 		stack = stack->next;
 	}
+	return (1);
 }
 
-static int	check_num(char *arg)
+static int	check_num(char *arg, t_node **stack, char **tmp)
 {
 	long	n;
 
-	valid_num(arg);
+	if (!valid_num(arg))
+	{
+		free_split(tmp);
+		node_clear(stack);
+		error (1);
+	}
 	n = ft_atol(arg);
-	check_range(n);
+	if (!check_range(n))
+	{
+		free_split(tmp);
+		node_clear(stack);
+		error(1);
+	}
 	return ((int)n);
 }
 
@@ -53,8 +64,13 @@ static void	process_nums(char **tmp, t_node **stack)
 	i = 0;
 	while (tmp[i])
 	{
-		n = check_num(tmp[i]);
-		check_duplicate(*stack, n);
+		n = check_num(tmp[i], stack, tmp);
+		if (!check_duplicate(*stack, n))
+		{
+			free_split(tmp);
+			node_clear(stack);
+			error(1);
+		}
 		node_addback(stack, node_new(n));
 		i++;
 	}
@@ -72,7 +88,10 @@ t_node	*build_stack(char **argv)
 	{
 		tmp = check_split(argv[i]);
 		if (!tmp)
+		{
+			node_clear(&stack);
 			error(1);
+		}
 		process_nums(tmp, &stack);
 		free_split(tmp);
 		i++;
