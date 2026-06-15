@@ -6,7 +6,7 @@
 /*   By: hfandino <hfandino@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/13 12:23:43 by hfandino          #+#    #+#             */
-/*   Updated: 2026/06/13 12:24:23 by hfandino         ###   ########.fr       */
+/*   Updated: 2026/06/15 13:01:05 by daherman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static t_flags	init_flags(void)
 	f.medium = 0;
 	f.complex = 0;
 	f.adaptive = 0;
+	f.bench = 0;
 	return (f);
 }
 
@@ -33,19 +34,23 @@ static int	is_flag(char *arg)
 		return (1);
 	else if (ft_strcmp(arg, "--adaptive") == 0)
 		return (1);
+	else if (ft_strcmp(arg, "--bench") == 0)
+		return (1);
 	return (0);
 }
 
 static void	apply_flag(char *arg, t_flags *f)
 {
-	if (ft_strcmp(arg, "--simple") == 0)
+	if (ft_strcmp(arg, "--simple") == 0 && !f->simple)
 		f->simple = 1;
-	else if (ft_strcmp(arg, "--medium") == 0)
+	else if (ft_strcmp(arg, "--medium") == 0 && !f->medium)
 		f->medium = 1;
-	else if (ft_strcmp(arg, "--complex") == 0)
+	else if (ft_strcmp(arg, "--complex") == 0 && !f->complex)
 		f->complex = 1;
-	else if (ft_strcmp(arg, "--adaptive") == 0)
+	else if (ft_strcmp(arg, "--adaptive") == 0 && !f->adaptive)
 		f->adaptive = 1;
+	else if (ft_strcmp(arg, "--bench") == 0 && !f->bench)
+		f->bench = 1;
 	else
 		error(1);
 }
@@ -72,7 +77,8 @@ t_flags	check_flag(char **argv)
 	while (argv[i] && is_flag(argv[i]))
 	{
 		apply_flag(argv[i], &flags);
-		count_flags++;
+		if (ft_strcmp(argv[i], "--bench") != 0)
+			count_flags++;
 		i++;
 	}
 	if (count_flags > 1)
