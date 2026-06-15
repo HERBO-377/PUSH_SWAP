@@ -6,7 +6,7 @@
 /*   By: hfandino <hfandino@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/06 14:23:21 by hfandino          #+#    #+#             */
-/*   Updated: 2026/06/13 12:21:09 by hfandino         ###   ########.fr       */
+/*   Updated: 2026/06/15 12:36:20 by hfandino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"

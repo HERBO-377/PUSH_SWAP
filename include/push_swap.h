@@ -6,7 +6,7 @@
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 12:52:04 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/13 12:09:36 by hfandino         ###   ########.fr       */
+/*   Updated: 2026/06/15 12:59:18 by hfandino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -19,6 +19,7 @@
 # include "libft.h"
 # include "node_struct.h"
 # include "parse_struct.h"
+# include "bench_struct.h"
 
 /* PARSING FUNCTIONS */
 char	**check_split(char *s);
