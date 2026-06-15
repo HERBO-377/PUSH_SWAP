@@ -6,7 +6,7 @@
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/04 12:33:35 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/15 10:52:12 by daherman         ###   ########.fr       */
+/*   Updated: 2026/06/15 12:02:48 by hfandino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static void	free_split(char **split)
 {
 	int	i;
 
+	if (!split)
+		return ;
 	i = 0;
 	while (split[i])
 	{
@@ -87,8 +89,9 @@ t_node	*build_stack(char **argv)
 	while (argv[i])
 	{
 		tmp = check_split(argv[i]);
-		if (!tmp)
+		if (!tmp || !tmp[0])
 		{
+			free_split(tmp);
 			node_clear(&stack);
 			error(1);
 		}

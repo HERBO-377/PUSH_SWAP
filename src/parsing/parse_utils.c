@@ -6,7 +6,7 @@
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/03 10:23:01 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/15 10:30:27 by daherman         ###   ########.fr       */
+/*   Updated: 2026/06/15 12:10:22 by hfandino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,13 @@ char	**check_split(char *s)
 	char	**arr;
 
 	arr = ft_split(s, ' ');
-	if (!arr || !arr[0])
+	if (!arr)
 		error(1);
+	if (!arr[0])
+	{
+		free(arr);
+		error(1);
+	}
 	return (arr);
 }
 
