@@ -57,6 +57,8 @@ SRC = \
       $(SRC_DIR)/strategies/medium_sort.c \
       $(SRC_DIR)/strategies/adaptative_sort.c \
       $(SRC_DIR)/strategies/complex_sort.c \
+      $(SRC_DIR)/bench/check_bench_strat.c \
+      $(SRC_DIR)/bench/print_bench.c
 
 OBJ = $(SRC:.c=.o)
 

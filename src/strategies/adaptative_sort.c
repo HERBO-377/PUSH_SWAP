@@ -12,20 +12,20 @@
 
 #include "push_swap.h"
 
-static void	small_sort(t_node **a, t_node **b)
+static void	small_sort(t_node **a, t_node **b, t_bench *bench)
 {
 	int	size;
 
 	size = stack_size(*a);
 	if (size <= 2)
-		sort_2(a);
+		sort_2(a, bench);
 	else if (size == 3)
-		sort_3(a);
+		sort_3(a, bench);
 	else if (size <= 5)
-		sort_5(a, b);
+		sort_5(a, b, bench);
 }
 
-void	adaptive_sort(t_node **a, t_node **b)
+void	adaptive_sort(t_node **a, t_node **b, t_bench *bench)
 {
 	int	size;
 	int	disorder;
@@ -35,14 +35,14 @@ void	adaptive_sort(t_node **a, t_node **b)
 	size = stack_size(*a);
 	if (size <= 5)
 	{
-		small_sort(a, b);
+		small_sort(a, b, bench);
 		return ;
 	}
 	disorder = compute_disorder(*a);
-	if (disorder < 20)
-		simple_sort(a, b);
-	else if (disorder < 50)
-		medium_sort(a, b);
+	if (disorder / 100 < 20)
+		simple_sort(a, b, bench);
+	else if (disorder / 100 < 50)
+		medium_sort(a, b, bench);
 	else
-		complex_sort(a, b);
+		complex_sort(a, b, bench);
 }

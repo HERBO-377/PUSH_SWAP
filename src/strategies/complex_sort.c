@@ -30,7 +30,7 @@ static int	get_max_bits(t_node *stack)
 	return (max_bits);
 }
 
-void	complex_sort(t_node **a, t_node **b)
+void	complex_sort(t_node **a, t_node **b, t_bench *bench)
 {
 	int	i;
 	int	j;
@@ -46,13 +46,13 @@ void	complex_sort(t_node **a, t_node **b)
 		while (j < size)
 		{
 			if ((((*a)->index >> i) & 1) == 1)
-				ra(a);
+				ra(a, bench);
 			else
-				pb(a, b);
+				pb(a, b, bench);
 			j++;
 		}
 		while (*b)
-			pa(a, b);
+			pa(a, b, bench);
 		i++;
 	}
 }

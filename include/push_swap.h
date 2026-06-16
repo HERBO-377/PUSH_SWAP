@@ -49,28 +49,32 @@ void	index_stack(t_node *stack);
 int		check_order(t_node *stack);
 
 /* OPERATIONS FUNCTIONS */
-void	sa(t_node **a);
-void	sb(t_node **b);
-void	ss(t_node **a, t_node **b);
-void	pa(t_node **a, t_node **b);
-void	pb(t_node **a, t_node **b);
-void	ra(t_node **a);
-void	rb(t_node **b);
-void	rr(t_node **a, t_node **b);
-void	rra(t_node **a);
-void	rrb(t_node **b);
-void	rrr(t_node **a, t_node **b);
+void	sa(t_node **a, t_bench *bench);
+void	sb(t_node **b, t_bench *bench);
+void	ss(t_node **a, t_node **b, t_bench *bench);
+void	pa(t_node **a, t_node **b, t_bench *bench);
+void	pb(t_node **a, t_node **b, t_bench *bench);
+void	ra(t_node **a, t_bench *bench);
+void	rb(t_node **b, t_bench *bench);
+void	rr(t_node **a, t_node **b, t_bench *bench);
+void	rra(t_node **a, t_bench *bench);
+void	rrb(t_node **b, t_bench *bench);
+void	rrr(t_node **a, t_node **b, t_bench *bench);
 
 /* SORT FUNCTIONS */
-void	sort_2(t_node **a);
-void	sort_3(t_node **a);
-void	sort_5(t_node **a, t_node **b);
-void	complex_sort(t_node **a, t_node **b);
-void	simple_sort(t_node **a, t_node **b);
-void	medium_sort(t_node **a, t_node **b);
-void	adaptive_sort(t_node **a, t_node **b);
+void	sort_2(t_node **a, t_bench *bench);
+void	sort_3(t_node **a, t_bench *bench);
+void	sort_5(t_node **a, t_node **b, t_bench *bench);
+void	complex_sort(t_node **a, t_node **b, t_bench *bench);
+void	simple_sort(t_node **a, t_node **b, t_bench *bench);
+void	medium_sort(t_node **a, t_node **b, t_bench *bench);
+void	adaptive_sort(t_node **a, t_node **b, t_bench *bench);
 
 /* DISPATCH FUNCTIONS */
-void	dispatch(t_node **a, t_node **b, t_flags flags);
+void	dispatch(t_node **a, t_node **b, t_flags flags, t_bench *bench);
+
+/* BENCH FUNCTIONS */
+t_bench	check_bench_strat(t_flags f);
+void	print_bench(t_bench *b);
 
 #endif

@@ -34,14 +34,22 @@ static int	push(t_node **dest, t_node **src)
 	return (1);
 }
 
-void	pa(t_node **a, t_node **b)
+void	pa(t_node **a, t_node **b, t_bench *bench)
 {
 	if (push(a, b))
+	{
 		ft_printf("pa\n");
+		bench->pa++;
+		bench->total++;
+	}
 }
 
-void	pb(t_node **a, t_node **b)
+void	pb(t_node **a, t_node **b, t_bench *bench)
 {
 	if (push(b, a))
+	{
 		ft_printf("pb\n");
+		bench->pb++;
+		bench->total++;
+	}
 }

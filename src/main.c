@@ -9,7 +9,6 @@
 /*   Updated: 2026/06/12 18:39:20 by hfandino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "push_swap.h"
 
 int	main(int argc, char **argv)
@@ -17,17 +16,23 @@ int	main(int argc, char **argv)
 	t_node	*a;
 	t_node	*b;
 	t_flags	flags;
+	t_bench	bench;
 
 	a = NULL;
 	b = NULL;
 	if (argc < 2)
 		return (0);
 	flags = check_flag(argv);
+	bench = check_bench_strat(flags);
 	a = build_stack(argv);
 	if (!a)
 		return (1);
 	index_stack(a);
-	dispatch(&a, &b, flags);
+	if (bench.enabled)
+		bench.disorder = compute_disorder(a);
+	dispatch(&a, &b, flags, &bench);
+	if (bench.enabled)
+		print_bench(&bench);
 	node_clear(&a);
 	node_clear(&b);
 	return (0);

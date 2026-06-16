@@ -12,10 +12,10 @@
 
 #include "push_swap.h"
 
-void	sort_2(t_node **a)
+void	sort_2(t_node **a, t_bench *bench)
 {
 	if (!a || !*a || !(*a)->next)
 		return ;
 	if ((*a)->content > (*a)->next->content)
-		sa(a);
+		sa(a, bench);
 }

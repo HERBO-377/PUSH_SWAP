@@ -34,19 +34,27 @@ static int	swap(t_node **stack)
 	return (1);
 }
 
-void	sa(t_node **a)
+void	sa(t_node **a, t_bench *bench)
 {
 	if (swap(a))
+	{
 		ft_printf("sa\n");
+		bench->sa++;
+		bench->total++;
+	}
 }
 
-void	sb(t_node **b)
+void	sb(t_node **b, t_bench *bench)
 {
 	if (swap(b))
+	{
 		ft_printf("sb\n");
+		bench->sb++;
+		bench->total++;
+	}
 }
 
-void	ss(t_node **a, t_node **b)
+void	ss(t_node **a, t_node **b, t_bench *bench)
 {
 	int	result_a;
 	int	result_b;
@@ -54,5 +62,9 @@ void	ss(t_node **a, t_node **b)
 	result_a = swap(a);
 	result_b = swap(b);
 	if (result_a || result_b)
+	{
 		ft_printf("ss\n");
+		bench->ss++;
+		bench->total++;
+	}
 }

@@ -34,7 +34,7 @@ static int	get_min_position(t_node *stack)
 	return (min_pos);
 }
 
-static void	move_min_to_top(t_node **a)
+static void	move_min_to_top(t_node **a, t_bench *bench)
 {
 	int	pos;
 	int	size;
@@ -45,7 +45,7 @@ static void	move_min_to_top(t_node **a)
 	{
 		while (pos > 0)
 		{
-			ra(a);
+			ra(a, bench);
 			pos--;
 		}
 	}
@@ -53,20 +53,20 @@ static void	move_min_to_top(t_node **a)
 	{
 		while (pos < size)
 		{
-			rra(a);
+			rra(a, bench);
 			pos++;
 		}
 	}
 }
 
-void	sort_5(t_node **a, t_node **b)
+void	sort_5(t_node **a, t_node **b, t_bench *bench)
 {
 	while (stack_size(*a) > 3)
 	{
-		move_min_to_top(a);
-		pb(a, b);
+		move_min_to_top(a, bench);
+		pb(a, b, bench);
 	}
-	sort_3(a);
+	sort_3(a, bench);
 	while (*b)
-		pa(a, b);
+		pa(a, b, bench);
 }

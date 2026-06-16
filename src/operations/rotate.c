@@ -32,19 +32,27 @@ static int	rotate(t_node **stack)
 	return (1);
 }
 
-void	ra(t_node **a)
+void	ra(t_node **a, t_bench *bench)
 {
 	if (rotate(a))
+	{
 		ft_printf("ra\n");
+		bench->ra++;
+		bench->total++;
+	}
 }
 
-void	rb(t_node **b)
+void	rb(t_node **b, t_bench *bench)
 {
 	if (rotate(b))
+	{
 		ft_printf("rb\n");
+		bench->rb++;
+		bench->total++;
+	}
 }
 
-void	rr(t_node **a, t_node **b)
+void	rr(t_node **a, t_node **b, t_bench *bench)
 {
 	int	result_a;
 	int	result_b;
@@ -52,5 +60,9 @@ void	rr(t_node **a, t_node **b)
 	result_a = rotate(a);
 	result_b = rotate(b);
 	if (result_a || result_b)
+	{
 		ft_printf("rr\n");
+		bench->rr++;
+		bench->total++;
+	}
 }

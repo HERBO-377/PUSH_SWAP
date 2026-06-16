@@ -12,17 +12,17 @@
 
 #include "push_swap.h"
 
-static void	dispatch_small(t_node **a, t_node **b)
+static void	dispatch_small(t_node **a, t_node **b, t_bench *bench)
 {
 	int	size;
 
 	size = stack_size(*a);
 	if (size <= 2)
-		sort_2(a);
+		sort_2(a, bench);
 	else if (size == 3)
-		sort_3(a);
+		sort_3(a, bench);
 	else if (size <= 5)
-		sort_5(a, b);
+		sort_5(a, b, bench);
 }
 
 static int	is_small(t_node *a)
@@ -30,31 +30,31 @@ static int	is_small(t_node *a)
 	return (stack_size(a) <= 5);
 }
 
-static int	dispatch_flag(t_node **a, t_node **b, t_flags flags)
+static int	dispatch_flag(t_node **a, t_node **b, t_flags flags, t_bench *bench)
 {
 	if (flags.simple)
-		simple_sort(a, b);
+		simple_sort(a, b, bench);
 	else if (flags.medium)
-		medium_sort(a, b);
+		medium_sort(a, b, bench);
 	else if (flags.complex)
-		complex_sort(a, b);
+		complex_sort(a, b, bench);
 	else if (flags.adaptive)
-		adaptive_sort(a, b);
+		adaptive_sort(a, b, bench);
 	else
 		return (0);
 	return (1);
 }
 
-void	dispatch(t_node **a, t_node **b, t_flags flags)
+void	dispatch(t_node **a, t_node **b, t_flags flags, t_bench *bench)
 {
 	if (!a || !*a || check_order(*a))
 		return ;
 	if (is_small(*a))
 	{
-		dispatch_small(a, b);
+		dispatch_small(a, b, bench);
 		return ;
 	}
-	if (dispatch_flag(a, b, flags))
+	if (dispatch_flag(a, b, flags, bench))
 		return ;
-	adaptive_sort(a, b);
+	adaptive_sort(a, b, bench);
 }

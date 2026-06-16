@@ -13,24 +13,28 @@
 #ifndef BENCH_STRUCT_H
 # define BENCH_STRUCT_H
 
+# define STRAT_SIMPLE	1
+# define STRAT_MEDIUM	2
+# define STRAT_COMPLEX	3
+# define STRAT_ADAPTIVE	4
+
 typedef struct s_bench
 {
-	int		enabled;
-	double	disorder;
-	char	*strategy;
-	char	*complexity;
-	int		total;
-	int		sa;
-	int		sb;
-	int		ss;
-	int		pa;
-	int		pb;
-	int		ra;
-	int		rb;
-	int		rr;
-	int		rra;
-	int		rrb;
-	int		rrr;
+	int	enabled;
+	int	strat;
+	int	disorder;
+	int	total;
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
 }	t_bench;
 
 #endif
