@@ -1,6 +1,6 @@
      [BENCH MODE]
 [bench] Disorder: 19.69%
-[bench] Strategy: Medium / O(n√n)
-[bench] Total_ops: 40
+[bench] Strategy: Simple / O(n²)
+[bench] Total_ops: 39
 [bench] sa: 0 sb: 0 ss: 0 pa: 12 pb: 12
-[bench] ra: 6 rb: 6 rr: 0 rra: 0 rrb: 4 rrr: 0
+[bench] ra: 12 rb: 0 rr: 0 rra: 3 rrb: 0 rrr: 0

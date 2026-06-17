@@ -6,7 +6,7 @@
 /*   By: hfandino <hfandino@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 17:37:24 by hfandino          #+#    #+#             */
-/*   Updated: 2026/06/12 18:26:09 by hfandino         ###   ########.fr       */
+/*   Updated: 2026/06/17 12:25:35 by daherman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	adaptive_sort(t_node **a, t_node **b, t_bench *bench)
 	int	size;
 	int	disorder;
 
+	bench->is_adaptive = 1;
 	if (!a || !b || !*a || check_order(*a))
 		return ;
 	size = stack_size(*a);
@@ -39,10 +40,20 @@ void	adaptive_sort(t_node **a, t_node **b, t_bench *bench)
 		return ;
 	}
 	disorder = compute_disorder(*a);
+	bench->disorder = disorder;
 	if (disorder / 100 < 20)
+	{
+		bench->strat = STRAT_SIMPLE;
 		simple_sort(a, b, bench);
+	}
 	else if (disorder / 100 < 50)
+	{
+		bench->strat = STRAT_MEDIUM;
 		medium_sort(a, b, bench);
+	}
 	else
+	{
+		bench->strat = STRAT_COMPLEX;
 		complex_sort(a, b, bench);
+	}
 }

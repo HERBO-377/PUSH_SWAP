@@ -6,7 +6,7 @@
 /*   By: hfandino <hfandino@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/15 12:58:36 by hfandino          #+#    #+#             */
-/*   Updated: 2026/06/17 11:05:55 by daherman         ###   ########.fr       */
+/*   Updated: 2026/06/17 12:02:05 by daherman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_bench
 {
 	int	enabled;
 	int	strat;
+	int	is_adaptive;
 	long long	disorder;
 	int	total;
 	int	sa;
