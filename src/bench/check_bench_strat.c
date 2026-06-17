@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_bench_strat.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/17 08:54:57 by daherman          #+#    #+#             */
+/*   Updated: 2026/06/17 08:56:09 by daherman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static t_bench	init_bench(t_flags f)
@@ -24,7 +36,7 @@ static t_bench	init_bench(t_flags f)
 	return (b);
 }
 
-t_bench check_bench_strat(t_flags f)
+t_bench	check_bench_strat(t_flags f)
 {
 	t_bench	b;
 
@@ -35,7 +47,7 @@ t_bench check_bench_strat(t_flags f)
 		b.strat = STRAT_MEDIUM;
 	else if (f.complex)
 		b.strat = STRAT_COMPLEX;
-	else if	(f.adaptive)
+	else if (f.adaptive)
 		b.strat = STRAT_ADAPTIVE;
 	return (b);
 }

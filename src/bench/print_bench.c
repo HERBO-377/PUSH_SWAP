@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_bench.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/17 08:56:57 by daherman          #+#    #+#             */
+/*   Updated: 2026/06/17 08:57:46 by daherman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	print_disorder(t_bench *b)
@@ -18,10 +30,10 @@ static void	print_strat(t_bench *b)
 	else if (b->strat == STRAT_MEDIUM)
 		ft_putendl_fd("[bench] Strategy: Medium / O(n√n)", 2);
 	else if (b->strat == STRAT_COMPLEX)
-                ft_putendl_fd("[bench] Strategy: Complex / O(n log n)", 2);
+		ft_putendl_fd("[bench] Strategy: Complex / O(n log n)", 2);
 	else
 	{
-                ft_putstr_fd("[bench] Strategy: Adaptive / ", 2);
+		ft_putstr_fd("[bench] Strategy: Adaptive / ", 2);
 		if (b->disorder < 20)
 			ft_putendl_fd("O(n²)", 2);
 		else if (b->disorder < 50)
