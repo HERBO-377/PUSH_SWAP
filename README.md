@@ -1,6 +1,6 @@
-# Push_swap
-
 *Este proyecto ha sido desarrollado como parte del Common Core de 42 por hfandino y daherman.*
+
+# Push_swap
 
 ---
 
