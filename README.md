@@ -1,42 +1,45 @@
-*Este proyecto ha sido creado como parte del currículo de 42 por hfandino y daherman.*
-
 # Push_swap
 
-## Descripción
-
-**Push_swap** es un proyecto del Common Core de 42 cuyo objetivo es ordenar una secuencia de números enteros utilizando únicamente un conjunto limitado de operaciones y un stack auxiliar.
-
-A diferencia de los algoritmos de ordenación tradicionales, el reto no consiste únicamente en ordenar correctamente los datos, sino también en minimizar el número de operaciones generadas.
-
-Este proyecto está enfocado en:
-
-* Estructuras de datos
-* Complejidad algorítmica
-* Manipulación de stacks
-* Técnicas de optimización
-* Análisis de rendimiento
-* Selección de estrategias según las características de la entrada
+*Este proyecto ha sido desarrollado como parte del Common Core de 42 por hfandino y daherman.*
 
 ---
 
-## Objetivos del proyecto
+# Descripción
 
-El proyecto requiere implementar múltiples estrategias de ordenación con diferentes niveles de complejidad:
+**Push_swap** es un proyecto cuyo objetivo consiste en ordenar una secuencia de números enteros utilizando únicamente un conjunto limitado de operaciones sobre stacks.
 
-| Estrategia | Complejidad Objetivo |
-| ---------- | -------------------- |
-| Simple     | O(n²)                |
-| Intermedia | O(n√n)               |
-| Compleja   | O(n log n)           |
-| Adaptativa | Selección dinámica   |
+A diferencia de los algoritmos clásicos de ordenación, el reto no consiste únicamente en obtener una secuencia ordenada, sino en hacerlo utilizando el menor número posible de operaciones.
 
-La estrategia adaptativa analiza el nivel de desorden de la entrada y selecciona automáticamente el algoritmo más adecuado.
+Durante el desarrollo de este proyecto se trabajaron conceptos relacionados con:
+
+* Estructuras de datos.
+* Listas doblemente enlazadas.
+* Complejidad algorítmica.
+* Optimización de operaciones.
+* Manipulación de stacks.
+* Estrategias adaptativas.
+* Benchmarking y análisis de rendimiento.
 
 ---
 
-## Operaciones permitidas
+# Objetivos
 
-### Swap
+El proyecto implementa distintas estrategias de ordenación para comparar su comportamiento según el nivel de desorden de la entrada.
+
+| Estrategia | Complejidad              |
+| ---------- | ------------------------ |
+| Simple     | O(n²)                    |
+| Intermedia | O(n√n)                   |
+| Compleja   | O(n log n)               |
+| Adaptativa | Dependiente del desorden |
+
+La estrategia adaptativa selecciona automáticamente el algoritmo más adecuado en función de las características de la entrada.
+
+---
+
+# Operaciones permitidas
+
+## Swap
 
 ```text
 sa
@@ -44,9 +47,9 @@ sb
 ss
 ```
 
-Intercambia los dos primeros elementos de uno o ambos stacks.
+Intercambia los dos primeros elementos del stack.
 
-### Push
+## Push
 
 ```text
 pa
@@ -55,7 +58,7 @@ pb
 
 Mueve el elemento superior de un stack al otro.
 
-### Rotate
+## Rotate
 
 ```text
 ra
@@ -65,7 +68,7 @@ rr
 
 Desplaza todos los elementos una posición hacia arriba.
 
-### Reverse Rotate
+## Reverse Rotate
 
 ```text
 rra
@@ -77,14 +80,14 @@ Desplaza todos los elementos una posición hacia abajo.
 
 ---
 
-## Normalización
+# Normalización
 
-Antes de ordenar, cada valor recibe un índice correspondiente a su posición dentro de la secuencia ordenada.
+Antes de comenzar la ordenación, cada número recibe un índice correspondiente a su posición dentro de la secuencia ordenada.
 
 Ejemplo:
 
 ```text
-Original:
+Entrada:
 50 10 30
 
 Ordenado:
@@ -96,180 +99,277 @@ Ordenado:
 30 -> 1
 ```
 
-Trabajar con índices normalizados simplifica la implementación de Radix Sort y evita problemas relacionados con el rango de valores de entrada.
+La normalización permite trabajar con índices consecutivos en lugar de valores reales, simplificando algoritmos como Radix Sort y evitando problemas con números negativos o valores muy grandes.
 
 ---
 
-## Estrategias implementadas
+# Estrategias implementadas
 
-### Estrategia Simple — O(n²)
+## Estrategia Simple — O(n²)
 
-Implementada en:
+Archivo:
 
 ```text
 src/strategies/simple_sort.c
 ```
 
-Esta estrategia busca repetidamente el elemento más pequeño, lo mueve temporalmente al stack B y posteriormente reconstruye el stack A en orden.
+Basada en la búsqueda repetida del valor mínimo.
 
-Conceptualmente es similar a un Selection Sort adaptado a las restricciones de Push_swap.
+Funcionamiento:
+
+1. Localiza el elemento más pequeño.
+2. Lo mueve al stack auxiliar.
+3. Repite el proceso hasta vaciar el stack principal.
+4. Reconstruye el stack original utilizando `pa`.
+
+Características:
+
+* Fácil de implementar.
+* Muy eficiente para entradas pequeñas.
+* Coste elevado en conjuntos grandes.
 
 ---
 
-### Estrategia Intermedia — O(n√n)
+## Estrategia Intermedia — O(n√n)
 
-Implementada en:
+Archivo:
 
 ```text
 src/strategies/medium_sort.c
 ```
 
-Esta estrategia utiliza particiones por bloques o *chunks*.
+Implementa una estrategia basada en *chunks*.
 
-El stack se divide en grupos de tamaño aproximado √n. Los elementos se distribuyen progresivamente al stack B y posteriormente se reconstruyen en orden.
+Funcionamiento:
+
+1. Divide la entrada en bloques de tamaño aproximado √n.
+2. Envía cada bloque al stack B.
+3. Reordena los elementos durante la reconstrucción.
+4. Recupera los elementos al stack A.
+
+Características:
+
+* Menor número de operaciones que la estrategia simple.
+* Muy competitiva para tamaños medianos.
+* Buen equilibrio entre complejidad y rendimiento.
 
 ---
 
-### Estrategia Compleja — O(n log n)
+## Estrategia Compleja — O(n log n)
 
-Implementada en:
+Archivo:
 
 ```text
-src/sort/complex_sort.c
+src/strategies/complex_sort.c
 ```
 
-Esta estrategia utiliza Radix Sort binario sobre índices normalizados.
+Implementa Radix Sort binario sobre índices normalizados.
 
-Para cada bit:
+Funcionamiento:
 
-1. Los elementos con bit 0 se envían al stack B.
-2. Los elementos con bit 1 permanecen en el stack A mediante rotaciones.
-3. Los elementos vuelven al stack A.
-4. El proceso se repite para el siguiente bit.
+Para cada bit del índice:
 
-Esta estrategia proporciona un rendimiento consistente para conjuntos grandes de datos.
+* Bit = 0 → `pb`
+* Bit = 1 → `ra`
+
+Al finalizar cada pasada:
+
+```text
+pa
+```
+
+recupera los elementos almacenados en B.
+
+Características:
+
+* Rendimiento estable.
+* Escala correctamente con entradas grandes.
+* Excelente comportamiento para conjuntos aleatorios.
 
 ---
 
-### Estrategia Adaptativa
+## Estrategia Adaptativa
 
-Implementada en:
+Archivo:
 
 ```text
 src/strategies/adaptative_sort.c
 ```
 
-La estrategia adaptativa calcula previamente el porcentaje de desorden de la entrada y selecciona automáticamente el algoritmo más adecuado.
+La estrategia adaptativa analiza previamente el nivel de desorden de la entrada y selecciona automáticamente el algoritmo más adecuado.
 
-Umbrales utilizados:
+Funcionamiento:
+
+1. Calcula el índice de desorden.
+2. Compara el resultado con los umbrales definidos.
+3. Selecciona la estrategia correspondiente.
+4. Ejecuta el algoritmo elegido.
+
+### Umbrales utilizados
 
 ```text
-Desorden < 20%      -> simple_sort
-20% - 49%           -> medium_sort
-50% o superior      -> complex_sort
+Desorden < 20%       -> simple_sort
+20% ≤ Desorden < 50% -> medium_sort
+Desorden ≥ 50%       -> complex_sort
 ```
 
-Estos valores siguen el modelo adaptativo propuesto por el enunciado del proyecto.
+### Justificación
+
+Los umbrales fueron seleccionados tras realizar pruebas con distintos tamaños de entrada.
+
+* Menos del 20% suele indicar una lista casi ordenada.
+* Entre el 20% y el 50% los chunks generan menos operaciones.
+* Por encima del 50% Radix Sort ofrece resultados más consistentes.
 
 ---
 
-## Justificación de las estrategias
+# Índice de desorden
 
-Se implementaron tres estrategias con diferentes niveles de complejidad para adaptarse a distintos escenarios de entrada.
+Antes de ordenar se calcula el nivel de desorden de la entrada.
 
-* La estrategia simple ofrece una solución sencilla basada en la extracción sucesiva del mínimo.
-* La estrategia intermedia utiliza particiones por chunks para reducir el número de operaciones en conjuntos de tamaño medio.
-* La estrategia compleja utiliza Radix Sort sobre índices normalizados, proporcionando un rendimiento estable para conjuntos grandes.
+Se contabilizan todas las inversiones presentes:
 
-La estrategia adaptativa selecciona automáticamente una de ellas según el nivel de desorden detectado en la entrada.
+```text
+a[i] > a[j]
+```
+
+para:
+
+```text
+i < j
+```
+
+La fórmula utilizada es:
+
+```text
+disorder = inversiones / pares_totales
+```
+
+Interpretación:
+
+```text
+0.00 -> completamente ordenado
+1.00 -> máximo desorden posible
+```
+
+Este valor es utilizado por la estrategia adaptativa.
 
 ---
 
-## Cálculo del desorden
+# Modo Benchmark
 
-El índice de desorden se calcula contando cuántos pares de elementos aparecen en un orden incorrecto respecto al resultado final esperado.
+El proyecto incorpora un modo opcional de benchmarking mediante la flag:
+
+```bash
+./push_swap --bench <números>
+```
+
+La información se envía a **stderr** para no interferir con el flujo de operaciones utilizado por el checker.
+
+Información mostrada:
+
+* Porcentaje de desorden.
+* Estrategia utilizada.
+* Complejidad teórica.
+* Número total de operaciones.
+* Número de operaciones de cada tipo.
 
 Ejemplo:
 
 ```text
-1 2 5 3 4
-
-Solo existe una inversión:
-
-5 > 3
+[BENCH MODE]
+[bench] Disorder: 52.06%
+[bench] Strategy: Adaptive / O(n log n)
+[bench] Total_ops: 1084
+[bench] sa: 0 sb: 0 ss: 0 pa: 384 pb: 384
+[bench] ra: 316 rb: 0 rr: 0 rra: 0 rrb: 0 rrr: 0
 ```
-
-El porcentaje obtenido permite clasificar la entrada como poco desordenada, moderadamente desordenada o altamente desordenada, determinando así la estrategia que se ejecutará.
 
 ---
 
-## Estructura del proyecto
+# Estructura del proyecto
 
 ```text
-src/
-├── analysis
-├── dispatch
-├── operations
-├── parsing
-├── sort
-├── stack
-└── strategies
+.
+├── include
+│   ├── bench_struct.h
+│   ├── flag_struct.h
+│   ├── node_struct.h
+│   ├── parse_struct.h
+│   ├── push_swap.h
+│   └── sort_struct.h
+├── libs
+│   └── libft
+├── src
+│   ├── analysis
+│   ├── bench
+│   ├── dispatch
+│   ├── operations
+│   ├── parsing
+│   ├── sort
+│   ├── stack
+│   └── strategies
+├── Makefile
+└── README.md
 ```
+
+### include
+
+Definición de estructuras y cabeceras del proyecto.
 
 ### analysis
 
-* Generación de índices
-* Cálculo del desorden
-* Verificación de orden
+Cálculo de índices, desorden y comprobación de orden.
+
+### bench
+
+Implementación del modo benchmark.
 
 ### dispatch
 
-* Selección y ejecución de estrategias
+Selección y ejecución de estrategias.
 
 ### operations
 
-* Implementación de todas las operaciones permitidas
+Implementación de las operaciones permitidas.
 
 ### parsing
 
-* Validación de argumentos
-* Construcción inicial de los stacks
+Validación de argumentos y construcción inicial de stacks.
 
 ### sort
 
-* Algoritmos de ordenación especializados
+Algoritmos para conjuntos pequeños.
 
 ### stack
 
-* Utilidades para la gestión de listas enlazadas
+Gestión de listas doblemente enlazadas.
 
 ### strategies
 
-* Implementación de las distintas estrategias de ordenación
+Implementación de las estrategias principales.
 
 ---
 
-## Compilación
-
-Compilar el proyecto:
+# Compilación
 
 ```bash
 make
 ```
 
-Limpiar archivos objeto:
+Limpiar objetos:
 
 ```bash
 make clean
 ```
 
-Eliminar todos los binarios:
+Eliminar binarios:
 
 ```bash
 make fclean
 ```
 
-Recompilar completamente:
+Recompilar:
 
 ```bash
 make re
@@ -277,43 +377,59 @@ make re
 
 ---
 
-## Uso
+# Uso
 
-### Modo adaptativo (por defecto)
+Modo adaptativo:
 
 ```bash
 ./push_swap 4 67 3 87 23
 ```
 
-### Estrategia simple
+Estrategia simple:
 
 ```bash
 ./push_swap --simple 4 67 3 87 23
 ```
 
-### Estrategia intermedia
+Estrategia intermedia:
 
 ```bash
 ./push_swap --medium 4 67 3 87 23
 ```
 
-### Estrategia compleja
+Estrategia compleja:
 
 ```bash
 ./push_swap --complex 4 67 3 87 23
 ```
 
-### Estrategia adaptativa
+Estrategia adaptativa:
 
 ```bash
 ./push_swap --adaptive 4 67 3 87 23
 ```
 
+Benchmark:
+
+```bash
+./push_swap --bench 4 67 3 87 23
+```
+
 ---
 
-## Testing
+# Testing
 
-La validación se realizó utilizando el checker proporcionado para el proyecto.
+Las pruebas realizadas incluyen:
+
+* Checker oficial.
+* Casos pequeños.
+* Casos aleatorios de 100 elementos.
+* Casos aleatorios de 500 elementos.
+* Pruebas de estrés.
+* Casos límite con INT_MIN e INT_MAX.
+* Validación de errores.
+* Valgrind.
+* Benchmark.
 
 Ejemplo:
 
@@ -330,84 +446,97 @@ OK
 
 ---
 
-## Resultados de rendimiento
+# Resultados de rendimiento
 
-| Estrategia | 100 números      | 500 números      |
-| ---------- | ---------------- | ---------------- |
-| Compleja   | 1084 operaciones | 6784 operaciones |
-| Intermedia | 783 operaciones  | 7349 operaciones |
-| Adaptativa | 799 operaciones  | 6784 operaciones |
+### Estrategia Compleja
 
-Todos los resultados obtenidos se encuentran dentro de los objetivos de rendimiento definidos por el proyecto.
+```text
+100 números -> 1084 operaciones
+500 números -> 6784 operaciones
+```
+
+### Estrategia Intermedia
+
+```text
+100 números -> ~760 - 820 operaciones
+500 números -> ~7200 - 7400 operaciones
+```
+
+### Estrategia Adaptativa
+
+```text
+100 números -> ~760 - 1084 operaciones
+500 números -> ~6700 - 7400 operaciones
+```
+
+Dependiendo del índice de desorden detectado.
 
 ---
 
-## Recursos
-
-### Documentación
+# Recursos
 
 * cppreference
+* Linux Manual Pages
 * GeeksForGeeks
 * Stack Overflow
-* Linux Manual Pages
-
-### Referencias algorítmicas
-
-* Radix Sort
-* Selection Sort
-* Chunk Sorting
-* Análisis de complejidad Big O
+* The Art of Computer Programming — Donald Knuth
 
 ---
 
-## Uso de Inteligencia Artificial
+# Uso de Inteligencia Artificial
 
 La Inteligencia Artificial fue utilizada como herramienta de apoyo para:
 
 * Consulta de conceptos teóricos.
-* Revisión de complejidad algorítmica.
-* Análisis de estrategias de ordenación.
+* Discusión de complejidad algorítmica.
 * Generación de escenarios de prueba.
-* Mejora de la documentación.
+* Revisión de documentación.
 
-Todo el código fue diseñado, implementado, depurado y validado por los autores del proyecto.
+Todas las decisiones de diseño, implementación, depuración, validación y pruebas fueron realizadas por los autores del proyecto.
 
 ---
 
-## Contribución de los integrantes
+# Contribuciones
 
-### hfandino
+## hfandino
 
-* Operaciones del proyecto
-* sort_2, sort_3, sort_5
-* complex_sort (Radix)
+* Operaciones
+* sort_2
+* sort_3
+* sort_5
 * simple_sort
 * medium_sort
+* complex_sort
 * adaptive_sort
+* Testing
+* Benchmark testing
+* Documentación técnica
 
-### daherman
+## daherman
 
-* Sistema de parsing
+* Parsing
 * Validación de argumentos
 * Gestión de flags
-* Construcción de stacks
-* Integración del dispatch
-* Arquitectura general del proyecto
+* Dispatch
+* Arquitectura general
+* Sistema benchmark
+* Integración general
 
 ---
 
-## Aprendizajes obtenidos
+# Aprendizajes obtenidos
 
-Durante este proyecto se reforzaron conocimientos relacionados con:
+Durante el desarrollo de este proyecto se reforzaron conocimientos relacionados con:
 
-* Listas enlazadas
-* Manipulación de stacks
-* Algoritmos de ordenación
-* Análisis de complejidad
-* Optimización de operaciones
-* Validación de entradas
-* Testing a gran escala
-* Desarrollo colaborativo mediante Git
-
-Push_swap fue nuestra primera experiencia implementando múltiples algoritmos para resolver un mismo problema y seleccionando dinámicamente la solución más adecuada según las características de la entrada.
+* Listas doblemente enlazadas.
+* Manipulación de stacks.
+* Algoritmos de ordenación.
+* Complejidad algorítmica.
+* Optimización de operaciones.
+* Normalización de datos.
+* Benchmarking.
+* Instrumentación.
+* Testing automatizado.
+* Valgrind.
+* Desarrollo colaborativo mediante Git.
 
