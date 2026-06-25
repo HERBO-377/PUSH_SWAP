@@ -6,7 +6,7 @@
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 12:52:04 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/17 10:24:06 by daherman         ###   ########.fr       */
+/*   Updated: 2026/06/23 13:00:38 by daherman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -73,7 +73,7 @@ void	adaptive_sort(t_node **a, t_node **b, t_bench *bench);
 
 /* DISPATCH FUNCTIONS */
 void	dispatch(t_node **a, t_node **b, t_flags flags, t_bench *bench);
-
+void	dispatch_small(t_node **a, t_node **b, t_bench *bench);
 /* BENCH FUNCTIONS */
 t_bench	check_bench_strat(t_flags f);
 void	print_bench(t_bench *b);

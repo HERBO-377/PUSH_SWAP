@@ -6,7 +6,7 @@
 /*   By: daherman <daherman@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 08:56:57 by daherman          #+#    #+#             */
-/*   Updated: 2026/06/17 12:18:44 by daherman         ###   ########.fr       */
+/*   Updated: 2026/06/23 13:05:18 by daherman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ static void	print_disorder(t_bench *b)
 static void	print_strat(t_bench *b)
 {
 	if (b->is_adaptive)
-        {
-                ft_putstr_fd("[bench] Strategy: Adaptive / ", 2);
-                if (b->disorder / 100 < 20)
-                        ft_putendl_fd("O(n²)", 2);
-                else if (b->disorder / 100 < 50)
-                        ft_putendl_fd("O(n√n)", 2);
-                else
-                        ft_putendl_fd("O(n log n)", 2);
-        }
+	{
+		ft_putstr_fd("[bench] Strategy: Adaptive / ", 2);
+		if (b->strat == STRAT_SIMPLE)
+			ft_putendl_fd("O(n²)", 2);
+		else if (b->strat == STRAT_MEDIUM)
+			ft_putendl_fd("O(n√n)", 2);
+		else
+			ft_putendl_fd("O(n log n)", 2);
+	}
 	else if (b->strat == STRAT_SIMPLE)
 		ft_putendl_fd("[bench] Strategy: Simple / O(n²)", 2);
 	else if (b->strat == STRAT_MEDIUM)

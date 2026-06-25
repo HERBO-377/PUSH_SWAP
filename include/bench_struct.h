@@ -6,7 +6,7 @@
 /*   By: hfandino <hfandino@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/15 12:58:36 by hfandino          #+#    #+#             */
-/*   Updated: 2026/06/17 12:02:05 by daherman         ###   ########.fr       */
+/*   Updated: 2026/06/23 12:26:55 by daherman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@
 
 typedef struct s_bench
 {
-	int	enabled;
-	int	strat;
-	int	is_adaptive;
+	int			enabled;
+	int			strat;
+	int			is_adaptive;
 	long long	disorder;
-	int	total;
-	int	sa;
-	int	sb;
-	int	ss;
-	int	pa;
-	int	pb;
-	int	ra;
-	int	rb;
-	int	rr;
-	int	rra;
-	int	rrb;
-	int	rrr;
+	int			total;
+	int			sa;
+	int			sb;
+	int			ss;
+	int			pa;
+	int			pb;
+	int			ra;
+	int			rb;
+	int			rr;
+	int			rra;
+	int			rrb;
+	int			rrr;
 }	t_bench;
 
 #endif

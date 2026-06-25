@@ -6,13 +6,13 @@
 /*   By: hfandino <hfandino@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 18:30:17 by hfandino          #+#    #+#             */
-/*   Updated: 2026/06/12 18:30:30 by hfandino         ###   ########.fr       */
+/*   Updated: 2026/06/23 13:27:38 by daherman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	dispatch_small(t_node **a, t_node **b, t_bench *bench)
+void	dispatch_small(t_node **a, t_node **b, t_bench *bench)
 {
 	int	size;
 
@@ -49,6 +49,17 @@ void	dispatch(t_node **a, t_node **b, t_flags flags, t_bench *bench)
 {
 	if (!a || !*a || check_order(*a))
 		return ;
+	if (!flags.simple && !flags.medium && !flags.complex)
+	{
+		bench->is_adaptive = 1;
+		bench->disorder = compute_disorder(*a);
+		if ((bench->disorder / 100) < 20)
+			bench->strat = STRAT_SIMPLE;
+		else if ((bench->disorder / 100) < 50)
+			bench->strat = STRAT_MEDIUM;
+		else
+			bench->strat = STRAT_COMPLEX;
+	}
 	if (is_small(*a))
 	{
 		dispatch_small(a, b, bench);
